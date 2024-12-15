@@ -1,4 +1,7 @@
 using E_Commerce.Data;
+using E_Commerce.Repositories.IRepositories;
+using E_Commerce.Repositories.MRepositories;
+using E_Commerce.Services;
 using E_Commerce.ViewModels;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
@@ -23,7 +26,7 @@ namespace E_Commerce
 
 			builder.Services.AddDbContext<AppDbContext>
 				(options => options
-				.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+				.UseSqlServer(builder.Configuration.GetConnectionString("cs")));
 
 
 			// Registering the AppUser Manager & RoleManager 
@@ -39,9 +42,21 @@ namespace E_Commerce
 				)
 
 				.AddEntityFrameworkStores<AppDbContext>(); // Registering The Stores to the manager
-			
 
-			var app = builder.Build();
+			builder.Services.AddScoped<IBrandRepo, BrandRepo>();
+            builder.Services.AddScoped<ICategoryRepo, CategoryRepo>();
+            builder.Services.AddScoped<IProductRepo, ProductRepo>();
+
+            builder.Services.AddScoped<IBrandService, BrandService>();
+            builder.Services.AddScoped<ICategoryService, CategoryService>();
+            builder.Services.AddScoped<IProductService, ProductService>();
+
+           
+
+
+
+
+            var app = builder.Build();
 
 			// Configure the HTTP request pipeline.
 			if (!app.Environment.IsDevelopment())

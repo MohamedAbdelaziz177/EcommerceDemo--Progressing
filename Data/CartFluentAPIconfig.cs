@@ -13,13 +13,15 @@ namespace E_Commerce.Data
             builder.HasOne(x => x.Product)
                   .WithMany()
                   .HasForeignKey(x => x.ProductId);
+                  
 
             /*
+            
             builder.HasOne(x => x.Customer)
                    .WithMany()
                    .HasForeignKey(x => x.CustomerId);
-            */
             
+            */
 
 
         }

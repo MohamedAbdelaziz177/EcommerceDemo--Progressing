@@ -49,7 +49,12 @@ namespace E_Commerce.Data
             new ProductFluentAPIconfig().Configure(builder.Entity<Product>());
 
             new PaymentFluentAPIconfig().Configure(builder.Entity<Payment>());
-            
+
+            new BrandFluentAPIconfig().Configure(builder.Entity<Brand>());
+
+            new CategoryFluentAPIconfig().Configure(builder.Entity<Category>());
+
+
 
 
 

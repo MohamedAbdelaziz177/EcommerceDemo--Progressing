@@ -4,6 +4,7 @@ using E_Commerce.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace E_Commerce.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20241215122751_SeedingData")]
+    partial class SeedingData
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -461,158 +464,6 @@ namespace E_Commerce.Migrations
                     b.HasIndex("CategoryId");
 
                     b.ToTable("Products");
-
-                    b.HasData(
-                        new
-                        {
-                            ProductId = 1,
-                            BrandId = 1,
-                            CategoryId = 1,
-                            ImageUrl = "",
-                            Name = "HP Zbook Power G9",
-                            Price = 19.99m,
-                            StockQuantity = 50
-                        },
-                        new
-                        {
-                            ProductId = 2,
-                            BrandId = 2,
-                            CategoryId = 2,
-                            ImageUrl = "Imgs/p7",
-                            Name = "HP Zbook Power G9 ",
-                            Price = 29.99m,
-                            StockQuantity = 30
-                        },
-                        new
-                        {
-                            ProductId = 3,
-                            BrandId = 3,
-                            CategoryId = 3,
-                            ImageUrl = "Imgs/p6",
-                            Name = "HP Zbook Power G9",
-                            Price = 39.99m,
-                            StockQuantity = 20
-                        },
-                        new
-                        {
-                            ProductId = 4,
-                            BrandId = 4,
-                            CategoryId = 4,
-                            ImageUrl = "Imgs/p5",
-                            Name = "HP Zbook Power G9",
-                            Price = 49.99m,
-                            StockQuantity = 60
-                        },
-                        new
-                        {
-                            ProductId = 5,
-                            BrandId = 5,
-                            CategoryId = 5,
-                            ImageUrl = "Imgs/p4",
-                            Name = "HP Zbook Power G9",
-                            Price = 59.99m,
-                            StockQuantity = 40
-                        },
-                        new
-                        {
-                            ProductId = 6,
-                            BrandId = 6,
-                            CategoryId = 6,
-                            ImageUrl = "Imgs/p3",
-                            Name = "HP Zbook Power G9",
-                            Price = 69.99m,
-                            StockQuantity = 25
-                        },
-                        new
-                        {
-                            ProductId = 7,
-                            BrandId = 7,
-                            CategoryId = 7,
-                            ImageUrl = "Imgs/p2",
-                            Name = "HP Zbook Power G9",
-                            Price = 79.99m,
-                            StockQuantity = 35
-                        },
-                        new
-                        {
-                            ProductId = 8,
-                            BrandId = 8,
-                            CategoryId = 8,
-                            ImageUrl = "Imgs/p3",
-                            Name = "HP Zbook Power G9",
-                            Price = 89.99m,
-                            StockQuantity = 15
-                        },
-                        new
-                        {
-                            ProductId = 9,
-                            BrandId = 9,
-                            CategoryId = 9,
-                            ImageUrl = "Imgs/p4",
-                            Name = "HP Zbook Power G9",
-                            Price = 99.99m,
-                            StockQuantity = 10
-                        },
-                        new
-                        {
-                            ProductId = 10,
-                            BrandId = 10,
-                            CategoryId = 10,
-                            ImageUrl = "Imgs/p5",
-                            Name = "HP Zbook Power G9",
-                            Price = 109.99m,
-                            StockQuantity = 5
-                        },
-                        new
-                        {
-                            ProductId = 11,
-                            BrandId = 11,
-                            CategoryId = 11,
-                            ImageUrl = "Imgs/p10",
-                            Name = "HP Zbook Power G9",
-                            Price = 119.99m,
-                            StockQuantity = 12
-                        },
-                        new
-                        {
-                            ProductId = 12,
-                            BrandId = 12,
-                            CategoryId = 12,
-                            ImageUrl = "Imgs/p7",
-                            Name = "HP Zbook Power G9",
-                            Price = 129.99m,
-                            StockQuantity = 18
-                        },
-                        new
-                        {
-                            ProductId = 13,
-                            BrandId = 13,
-                            CategoryId = 13,
-                            ImageUrl = "Imgs/p9",
-                            Name = "HP Zbook Power G9",
-                            Price = 139.99m,
-                            StockQuantity = 22
-                        },
-                        new
-                        {
-                            ProductId = 14,
-                            BrandId = 14,
-                            CategoryId = 14,
-                            ImageUrl = "Imgs/p8",
-                            Name = "HP Zbook Power G9",
-                            Price = 149.99m,
-                            StockQuantity = 8
-                        },
-                        new
-                        {
-                            ProductId = 15,
-                            BrandId = 15,
-                            CategoryId = 15,
-                            ImageUrl = "Imgs/p10",
-                            Name = "HP Zbook Power G9",
-                            Price = 159.99m,
-                            StockQuantity = 6
-                        });
                 });
 
             modelBuilder.Entity("E_Commerce.ViewModels.ApplicationRole", b =>
