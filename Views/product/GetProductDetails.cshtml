@@ -1,0 +1,195 @@
+﻿@using E_Commerce.ViewModels
+@model ProductDetailsVM
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Product Details</title>
+    <style>
+        .product-container {
+            display: flex;
+            max-width: 900px;
+            margin: 20px auto;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            font-family: Arial, sans-serif;
+        }
+
+        .product-img {
+            flex: 1;
+            max-width: 300px;
+            margin-right: 20px;
+        }
+
+        .product-img img {
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+
+        .product-details {
+            flex: 2;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .product-title {
+            font-size: 28px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .product-description {
+            font-size: 16px;
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+
+        .product-meta {
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+
+        .quantity-container {
+            display: flex;
+            align-items: center;
+            margin-top: 15px;
+        }
+
+        .quantity-label {
+            font-size: 16px;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        .quantity-value {
+            font-size: 16px;
+            margin-right: 10px;
+        }
+
+        .btn-quantity {
+            padding: 5px 15px;
+            font-size: 14px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .btn-increase {
+            background-color: #28a745;
+            color: white;
+            margin-right: 5px;
+        }
+
+        .btn-decrease {
+            background-color: #dc3545;
+            color: white;
+        }
+
+        .action-buttons {
+            margin-top: 20px;
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn-action {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .btn-add-to-cart {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .btn-add-to-fav {
+            background-color: #ffc107;
+            color: black;
+        }
+
+        .btn:hover {
+            opacity: 0.9;
+        }
+    </style>
+</head>
+<body>
+    <div class="product-container">
+        <!-- Image Section -->
+        <div class="product-img">
+
+            @* @UrlContent solves the problem of the ~/ *@
+            <img src="@Url.Content($"{Model.ProductImg}")" alt="@Model.Name" />
+
+        </div>
+
+        <!-- Details Section -->
+        <div class="product-details">
+            <div>
+                <h1 class="product-title">@Model.Name</h1>
+
+                <p class="card-text text-muted">
+                    <strong>Price:</strong> $@Model.Price
+                </p>
+
+                <p class="product-description">@Model.Description</p>
+                
+                    <p class="product-meta">
+                    <strong>Category: </strong> 
+                    <a asp-action="GetProductsByCategory" asp-route-id="@Model.categoryId">
+                      
+                        @Model.category
+                    </a>
+                </p>
+
+                <p class="product-meta">
+                    <strong>Brand: </strong>
+                    <a asp-action="GetProductsByBrand" asp-route-id="@Model.brandId">
+
+                        @Model.brand
+                    </a>
+                </p>
+            </div>
+
+            <!-- Quantity Section -->
+            <div class="quantity-container">
+                <span class="quantity-label">Quantity Available:</span>
+
+                <span class="quantity-value">@Model.QuantityAvailabe</span>
+                <input type="hidden" name="productId" value="@Model.Name"/>
+
+
+                <form asp-controller="Product" asp-action="IncreaseQuantity" method="post" style="display:inline;">
+                    <input type="hidden" name="productId" value="@Model.Name" />
+                    <button type="submit" class="btn-quantity btn-increase">+</button>
+                </form>
+                <form asp-controller="Product" asp-action="DecreaseQuantity" method="post" style="display:inline;">
+                    <input type="hidden" name="productId" value="@Model.Name" />
+                    <button type="submit" class="btn-quantity btn-decrease">-</button>
+                </form>
+            
+            </div>
+
+            
+            <!-- Action Buttons -->
+            <div class="action-buttons">
+                <form asp-controller="Cart" asp-action="AddToCart" method="post">
+                    <input type="hidden" name="productId" value="@Model.Name" />
+                    <button type="submit" class="btn-action btn-add-to-cart">Add to Cart</button>
+                </form>
+                <form asp-controller="Favorites" asp-action="AddToFavorites" method="post">
+                    <input type="hidden" name="productId" value="@Model.Name" />
+                    <button type="submit" class="btn-action btn-add-to-fav">Add to Favorites</button>
+                </form>
+            </div>
+            
+        </div>
+    </div>
+</body>
+</html>

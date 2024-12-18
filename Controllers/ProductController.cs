@@ -24,17 +24,19 @@ namespace E_Commerce.Controllers
 
 
         
-        public IActionResult Index()
+        public async Task<IActionResult> GetAllProducts()
         {
-            return Content("Hahahaaa");
+            List<ProductDetailsVM> products = await productService.GetAllProducts();
+            return View(products);
         }
 
-        public IActionResult Details(int ProductId) 
+        public async Task<IActionResult> GetProductDetails(int id) 
         {
-
-            return View();
-
+            ProductDetailsVM prod = await productService.GetProductDetails(id);
+            return View(prod);
         }
+
+
 
         [Authorize(Roles = "admin")]
         [HttpGet]
@@ -65,7 +67,7 @@ namespace E_Commerce.Controllers
 
             await productService.SaveProduct(product);
 
-            return RedirectToAction("Index");
+            return RedirectToAction("GetAllProducts");
         }
 
         [Authorize(Roles = "admin")]
@@ -74,7 +76,7 @@ namespace E_Commerce.Controllers
         {           
             await productService.DeleteProductAsync(ProductId);
 
-            return RedirectToAction("Index");
+            return RedirectToAction("GetAllProducts");
         }
 
         [HttpGet]
@@ -108,7 +110,21 @@ namespace E_Commerce.Controllers
 
             await productService.SaveUpdatedProduct(product);
 
-            return RedirectToAction("Index");
+            return RedirectToAction("GetAllProducts");
+
+        }
+
+        public async Task<IActionResult> GetProductsByCategory(int id)
+        {
+            var productsFiltered = await productService.GetProductsByCategoryId(id);
+            return View("GetAllProducts" , productsFiltered);
+
+        }
+
+        public async Task<IActionResult> GetProductsByBrand(int id)
+        {
+            var productsFiltered = await productService.GetProductsByBrandId(id);
+            return View("GetAllProducts", productsFiltered);
 
         }
     }

@@ -14,5 +14,14 @@ namespace E_Commerce.Services.IServices
 
         public Task<EditProductVM> updateProduct(int id);
 
+        public Task<ProductDetailsVM> GetProductDetails(int id);
+
+        public Task<List<ProductDetailsVM>> GetAllProducts();
+
+        public  Task<List<ProductDetailsVM>> GetProductsByCategoryId(int id);
+
+        public  Task<List<ProductDetailsVM>> GetProductsByBrandId(int id);
+
+
     }
 }

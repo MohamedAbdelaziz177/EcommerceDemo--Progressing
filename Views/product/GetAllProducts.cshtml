@@ -1,0 +1,18 @@
+﻿@using E_Commerce.ViewModels
+
+@model List<ProductDetailsVM> 
+
+@{
+    ViewData["Title"] = "Product Index";
+}
+
+
+<div class="container">
+    <h1>Product List</h1>
+    <div class="row">
+        @foreach (var product in Model)
+        {
+           <partial name="ProductCardPartia" model="product"></partial>
+        }
+    </div>
+</div>

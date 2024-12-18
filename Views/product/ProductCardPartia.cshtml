@@ -1,0 +1,19 @@
+﻿@using E_Commerce.ViewModels
+@model ProductDetailsVM;
+
+
+<div class="col-md-4 mb-4">
+    <div class="card">
+        <img class="card-img-top" src="@Url.Content(Model.ProductImg)" alt="Model.Name" style="height: 250px; object-fit: cover;">
+        <div class="card-body">
+            <h5 class="card-title">@Model.Name</h5>
+            <p class="card-text">@Model.Description.Substring(0, Math.Min(100, @Model.Description.Length))...</p>
+
+            <p class="card-text text-muted">
+                <strong>Price:</strong> $@Model.Price
+            </p>
+
+            <a asp-controller="Product" asp-action="GetProductDetails" asp-route-id="@Model.ProductId" class="btn btn-primary">View Details</a>
+        </div>
+    </div>
+</div>

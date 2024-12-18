@@ -90,6 +90,18 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NccHJvZHVjdFxFZGl0UHJvZHVjdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[F:/E-Commerce/Views/product/GetAllProducts.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NccHJvZHVjdFxHZXRBbGxQcm9kdWN0cy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/E-Commerce/Views/product/GetProductDetails.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NccHJvZHVjdFxHZXRQcm9kdWN0RGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/E-Commerce/Views/product/ProductCardPartia.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NccHJvZHVjdFxQcm9kdWN0Q2FyZFBhcnRpYS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [F:/E-Commerce/Views/Role/AddRole.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUm9sZVxBZGRSb2xlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
