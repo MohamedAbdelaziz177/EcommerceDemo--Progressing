@@ -1,7 +1,8 @@
 using E_Commerce.Data;
 using E_Commerce.Repositories.IRepositories;
 using E_Commerce.Repositories.MRepositories;
-using E_Commerce.Services;
+using E_Commerce.Services.IServices;
+using E_Commerce.Services.MServices;
 using E_Commerce.ViewModels;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
@@ -11,7 +12,7 @@ using Microsoft.Extensions.Options;
 
 namespace E_Commerce
 {
-	public class Program
+    public class Program
 	{
 		public static void Main(string[] args)
 		{

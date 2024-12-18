@@ -1,0 +1,56 @@
+﻿@model IEnumerable<E_Commerce.Models.Brand>
+
+@{
+    ViewData["Title"] = "GetAllBrands";
+}
+
+<h4>AllBrands</h4>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.BrandId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.BrandId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                    <a asp-action="GetBrandDetails" asp-route-id="@item.BrandId"> Details &nbsp </a>
+
+                    @if (User.IsInRole("admin"))
+                    {
+                        <a asp-action="EditBrand" asp-route-id="@item.BrandId"> Edit &nbsp </a>
+                        <a asp-action="RemoveBrand" asp-route-id="@item.BrandId"> Delete &nbsp</a>
+                    }
+
+                   
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+
+<br><br>
+
+<p>
+
+    @if (User.IsInRole("admin"))
+    {
+        <a asp-action="AddBrand">Add New ? </a>
+
+    }
+
+</p>

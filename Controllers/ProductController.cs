@@ -1,6 +1,6 @@
 ﻿using E_Commerce.Data;
 using E_Commerce.Models;
-using E_Commerce.Services;
+using E_Commerce.Services.IServices;
 using E_Commerce.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -31,6 +31,7 @@ namespace E_Commerce.Controllers
 
         public IActionResult Details(int ProductId) 
         {
+
             return View();
 
         }
@@ -68,29 +69,46 @@ namespace E_Commerce.Controllers
         }
 
         [Authorize(Roles = "admin")]
-        public IActionResult DeleteProduct(int ProductId) 
-        {
-            return View();
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteProduct(int ProductId) 
+        {           
+            await productService.DeleteProductAsync(ProductId);
 
+            return RedirectToAction("Index");
         }
 
         [HttpGet]
         [Authorize(Roles = "admin")]
 
-        public IActionResult EditProduct(int id) 
+        public async Task<IActionResult> EditProduct(int id) 
         {
-            return View();
+
+            EditProductVM EditProductVM = await productService.updateProduct(id);
+
+            return View(EditProductVM);
 
         }
 
         [HttpPost]
         [Authorize(Roles = "admin")]
         [ValidateAntiForgeryToken]
-        public IActionResult SaveEdit(Product product)
+        public async Task<IActionResult> SaveEdit(EditProductVM product)
         {
 
-            
-            return View();
+            if (!ModelState.IsValid)
+            {
+                product.Categories = await categoryService.GetAllCategories();
+                product.Brands = await brandService.GetAllBrands();
+
+                return View("EditProduct", product);
+            }
+
+
+            // Update Logic
+
+            await productService.SaveUpdatedProduct(product);
+
+            return RedirectToAction("Index");
 
         }
     }

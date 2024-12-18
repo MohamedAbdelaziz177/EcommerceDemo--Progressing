@@ -15,6 +15,7 @@ namespace E_Commerce.Repositories.MRepositories
         {
             this.con = con;
         }
+
         public async Task deleteAsync(int id)
         {
             var category = await con.Categories.FindAsync(id);
