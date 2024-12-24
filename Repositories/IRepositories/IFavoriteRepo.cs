@@ -6,6 +6,11 @@ namespace E_Commerce.Repositories.IRepositories
     {
 
         Task<IEnumerable<Favorite>> GetFavoritesForCustomerAsync(int customerId);
+     //   Task<List<Product>> GetFavoritesForCustomerAsync(string? userId);
         Task<bool> IsProductInFavoritesAsync(int customerId, int productId);
+
+        public Task<Favorite> GetFavByCustAndProd(int customerId, int productId);
+
+        public  Task DeleteFavByCustAndProd(int customerId, int productId);
     }
 }

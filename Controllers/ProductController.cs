@@ -33,6 +33,11 @@ namespace E_Commerce.Controllers
         public async Task<IActionResult> GetProductDetails(int id) 
         {
             ProductDetailsVM prod = await productService.GetProductDetails(id);
+
+
+            //ViewData["AddedToCard"] = true;
+
+
             return View(prod);
         }
 

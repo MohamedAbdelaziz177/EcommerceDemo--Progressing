@@ -164,29 +164,41 @@
                 <span class="quantity-value">@Model.QuantityAvailabe</span>
                 <input type="hidden" name="productId" value="@Model.Name"/>
 
-
+                @*
                 <form asp-controller="Product" asp-action="IncreaseQuantity" method="post" style="display:inline;">
-                    <input type="hidden" name="productId" value="@Model.Name" />
-                    <button type="submit" class="btn-quantity btn-increase">+</button>
+                <input type="hidden" name="productId" value="@Model.Name" />
+                <button type="submit" class="btn-quantity btn-increase">+</button>
                 </form>
                 <form asp-controller="Product" asp-action="DecreaseQuantity" method="post" style="display:inline;">
-                    <input type="hidden" name="productId" value="@Model.Name" />
-                    <button type="submit" class="btn-quantity btn-decrease">-</button>
+                <input type="hidden" name="productId" value="@Model.Name" />
+                <button type="submit" class="btn-quantity btn-decrease">-</button>
                 </form>
+                *@
+                
             
             </div>
 
             
             <!-- Action Buttons -->
             <div class="action-buttons">
-                <form asp-controller="Cart" asp-action="AddToCart" method="post">
+               <form asp-controller="Cart" asp-action="AddToCart" asp-route-id="@Model.ProductId" method="post">
                     <input type="hidden" name="productId" value="@Model.Name" />
-                    <button type="submit" class="btn-action btn-add-to-cart">Add to Cart</button>
+                    <button type="submit" class="btn-action btn-add-to-cart">Add to Cart <i class="fas fa-shopping-cart"></i></button>
                 </form>
                 <form asp-controller="Favorites" asp-action="AddToFavorites" method="post">
                     <input type="hidden" name="productId" value="@Model.Name" />
-                    <button type="submit" class="btn-action btn-add-to-fav">Add to Favorites</button>
+                    <button type="submit" class="btn-action btn-add-to-fav">Add to Favorites <i class="fas fa-heart"></i> </button>
                 </form>
+
+                @if(User.IsInRole("admin"))
+                {
+                    <br>
+                    <a style="text-decoration:none" asp-action="EditProduct" asp-route-id="@Model.ProductId" class="btn-action">
+                        
+                        <p >Edit</p> </a>
+
+                }
+
             </div>
             
         </div>

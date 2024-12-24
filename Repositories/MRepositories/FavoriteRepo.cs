@@ -77,6 +77,22 @@ namespace E_Commerce.Repositories.MRepositories
                                            
             return (faved != null);
         }
+
+        public async Task<Favorite> GetFavByCustAndProd(int customerId, int productId)
+        {
+            Favorite faved = await con.Favorites
+                .FirstOrDefaultAsync(x => x.CustomerId == customerId && x.ProductId == productId);
+
+
+            return faved;
+        }
+
+        public async Task DeleteFavByCustAndProd(int customerId, int productId)
+        {
+            Favorite faved = await GetFavByCustAndProd(customerId, productId);
+            con.Favorites.Remove(faved);
+
+        }
     }
 }
 

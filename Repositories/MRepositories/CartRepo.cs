@@ -51,7 +51,8 @@ namespace E_Commerce.Repositories.MRepositories
 
         public async Task updateAsync(Cart entity)
         {
-            con.Carts.Update(entity);
+            var c = con.Carts.Find(entity.CartId);
+            c.quantity = entity.quantity;
 
             await con.SaveChangesAsync();
         }

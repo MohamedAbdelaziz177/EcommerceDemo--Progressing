@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "QWmHzTQaH5yZlkd8jvzm2/5Wk4+0f6JIbFyorxZFXIQ=",
+  "Hash": "xAI1VzQgS2mhOANpL4POp8/NAFDn+HB6z7lmHb2BZjc=",
   "Source": "E-Commerce",
   "BasePath": "_content/E-Commerce",
   "Mode": "Default",
@@ -53,6 +53,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "F:\\E-Commerce\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\E-Commerce.bundle.scp.css"
+    },
+    {
+      "Identity": "F:\\E-Commerce\\wwwroot\\css\\bootstrap.min (1).css",
+      "SourceId": "E-Commerce",
+      "SourceType": "Discovered",
+      "ContentRoot": "F:\\E-Commerce\\wwwroot\\",
+      "BasePath": "_content/E-Commerce",
+      "RelativePath": "css/bootstrap.min (1).css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\bootstrap.min (1).css"
     },
     {
       "Identity": "F:\\E-Commerce\\wwwroot\\css\\bootstrap.min.css",

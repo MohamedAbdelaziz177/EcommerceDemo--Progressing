@@ -1,0 +1,29 @@
+﻿@using E_Commerce.ViewModels
+@model CartVM
+
+@{
+    ViewData["Title"] = "Edit Cart Item";
+}
+
+
+
+<form asp-action="SaveEdit" asp-controller="Cart" method="post">
+   
+    
+    <input type="hidden" asp-for="CartId" readonly/>
+    <input type="hidden" asp-for="ProductId" readonly />
+    <input type="hidden" asp-for="customerId" readonly />
+    <input type="hidden" asp-for="ProductName" readonly />
+    <input type="hidden" asp-for="TotalPrice" readonly />
+    <input type="hidden" asp-for="UpdatedAt"  readonly />
+   
+
+    <div  class="form-group">
+        <label asp-for="quantity" class="form-label">Quantity</label>
+        <input asp-for="quantity" class="form-control" type="number" min="1" />
+    </div>
+    <br><br>
+    <button type="submit" class="btn btn-primary">Save</button>
+    <a asp-action="GetAllCarts" class="btn btn-secondary">Cancel</a>
+
+</form>

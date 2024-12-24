@@ -4,10 +4,12 @@
     ViewData["Title"] = "EditBrand";
 }
 
-<h4>EditBrand</h4>
+
 
 
 <hr />
+
+<div class="text-center" style="padding-left: 600px">
 <div class="row">
     <div class="col-md-4">
         <form asp-action="SaveEdit">
@@ -39,13 +41,15 @@
 
 
         </form>
+        <br>
+        <a class="btn btn-primary text-center" asp-action="GetAllBrands">Back to List</a>
     </div>
 </div>
 
 <div>
-    <a asp-action="GetAllBrands">Back to List</a>
+    
 </div>
-
+</div>
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }

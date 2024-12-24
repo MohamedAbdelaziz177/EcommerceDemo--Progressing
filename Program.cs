@@ -16,6 +16,7 @@ namespace E_Commerce
 	{
 		public static void Main(string[] args)
 		{
+	
 			var builder = WebApplication.CreateBuilder(args);
 
 			// Add services to the container.
@@ -47,12 +48,14 @@ namespace E_Commerce
 			builder.Services.AddScoped<IBrandRepo, BrandRepo>();
             builder.Services.AddScoped<ICategoryRepo, CategoryRepo>();
             builder.Services.AddScoped<IProductRepo, ProductRepo>();
+            builder.Services.AddScoped<ICartRepo, CartRepo>();
+
 
             builder.Services.AddScoped<IBrandService, BrandService>();
             builder.Services.AddScoped<ICategoryService, CategoryService>();
             builder.Services.AddScoped<IProductService, ProductService>();
+            builder.Services.AddScoped<ICartService, CartService>();
 
-           
 
 
 

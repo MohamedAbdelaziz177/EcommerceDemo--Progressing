@@ -5,6 +5,7 @@ using E_Commerce.Services.IServices;
 using E_Commerce.Repositories.MRepositories;
 using System.Drawing.Drawing2D;
 using Microsoft.AspNetCore.Mvc;
+using System.Linq;
 
 namespace E_Commerce.Services.MServices
 {
@@ -135,29 +136,10 @@ namespace E_Commerce.Services.MServices
 
             ProductDetailsVM? prodVM = new ProductDetailsVM();
 
-            prodVM = (
+            var prods = await GetAllProducts();
 
-                      from prods in products
-                      join cats in categories
-                      on prods.CategoryId equals cats.CategoryId
-                      join brds in brands
-                     on prods.BrandId equals brds.BrandId
-                      where prods.ProductId == id
-                      select new ProductDetailsVM()
-                      {
-                          ProductId = prods.ProductId,
-                          Name = prods.Name,
-                          category = cats.Name,
-                          brand = brds.Name,
-                          QuantityAvailabe = prods.StockQuantity,
-                          ProductImg = prods.ImageUrl + ".jpg",
-                          Price = prods.Price,
-                          categoryId = prods.CategoryId,
-                          brandId = prods.BrandId,
+            prodVM = prods.Where(x => x.ProductId == id).FirstOrDefault();
 
-                      }
-
-                      ).FirstOrDefault();
 
             return prodVM;
             
